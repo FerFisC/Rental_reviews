@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rental Reviews Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Community-powered rental insights</p>
+        <h1>Rental Reviews Hub</h1>
+        <p>
+          Share honest renter feedback on homes and landlords, and let landlords
+          rate renter experiences to build a more transparent rental ecosystem.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel form-panel">
+        <h2>Renter: review a rental property</h2>
+        <form id="renter-review-form">
+          <div class="field-grid">
+            <label>
+              Property name or address
+              <input type="text" id="property" required placeholder="123 Main St Apartments" />
+            </label>
+            <label>
+              Neighborhood / city
+              <input type="text" id="neighborhood" required placeholder="Downtown, Springfield" />
+            </label>
+            <label>
+              State
+              <input type="text" id="state" required placeholder="OR" />
+            </label>
+            <label>
+              Move-in year
+              <input type="number" id="year" min="1900" max="2100" placeholder="2023" />
+            </label>
+          </div>
+
+          <h3>Category ratings (1 = poor, 5 = excellent)</h3>
+          <div class="ratings-grid">
+            <label>Property condition <input type="range" id="property-rating" min="1" max="5" value="3" /></label>
+            <label>Neighborhood safety <input type="range" id="neighborhood-rating" min="1" max="5" value="3" /></label>
+            <label>Amenities <input type="range" id="amenities-rating" min="1" max="5" value="3" /></label>
+            <label>Neighbors <input type="range" id="neighbors-rating" min="1" max="5" value="3" /></label>
+            <label>Landlord responsiveness <input type="range" id="landlord-rating" min="1" max="5" value="3" /></label>
+          </div>
+
+          <label>
+            Your comments
+            <textarea
+              id="comment"
+              rows="5"
+              required
+              placeholder="Share what stood out: maintenance quality, noise, communication, etc."
+            ></textarea>
+          </label>
+
+          <button type="submit">Post renter review</button>
+        </form>
+      </section>
+
+      <section class="panel form-panel">
+        <h2>Landlord: review a renter</h2>
+        <form id="landlord-review-form">
+          <div class="field-grid">
+            <label>
+              Renter initials or alias
+              <input type="text" id="renter-name" required placeholder="J.D." />
+            </label>
+            <label>
+              Rental property
+              <input type="text" id="renter-property" required placeholder="123 Main St Apartments" />
+            </label>
+            <label>
+              State
+              <input type="text" id="renter-state" required placeholder="OR" />
+            </label>
+            <label>
+              Lease end year
+              <input type="number" id="lease-end-year" min="1900" max="2100" placeholder="2025" />
+            </label>
+          </div>
+
+          <h3>Category ratings (1 = poor, 5 = excellent)</h3>
+          <div class="ratings-grid">
+            <label>Payment reliability <input type="range" id="payment-rating" min="1" max="5" value="3" /></label>
+            <label>Property care <input type="range" id="care-rating" min="1" max="5" value="3" /></label>
+            <label>Communication <input type="range" id="communication-rating" min="1" max="5" value="3" /></label>
+            <label>Neighbor consideration <input type="range" id="consideration-rating" min="1" max="5" value="3" /></label>
+            <label>Lease compliance <input type="range" id="compliance-rating" min="1" max="5" value="3" /></label>
+          </div>
+
+          <label>
+            Landlord comments
+            <textarea
+              id="landlord-comment"
+              rows="5"
+              required
+              placeholder="Share objective observations from the lease period."
+            ></textarea>
+          </label>
+
+          <button type="submit">Post landlord review</button>
+        </form>
+      </section>
+
+      <section class="panel stats-panel">
+        <h2>Renter review stats</h2>
+        <div id="renter-stats" class="stats"></div>
+      </section>
+
+      <section class="panel stats-panel">
+        <h2>Landlord review stats</h2>
+        <div id="landlord-stats" class="stats"></div>
+      </section>
+
+      <section class="panel">
+        <div class="reviews-header">
+          <h2>Recent renter reviews</h2>
+          <button id="clear-renter-reviews" class="danger" type="button">Clear renter reviews</button>
+        </div>
+        <div id="renter-reviews" class="reviews"></div>
+      </section>
+
+      <section class="panel">
+        <div class="reviews-header">
+          <h2>Recent landlord reviews</h2>
+          <button id="clear-landlord-reviews" class="danger" type="button">Clear landlord reviews</button>
+        </div>
+        <div id="landlord-reviews" class="reviews"></div>
+      </section>
+    </main>
+
+    <template id="renter-review-template">
+      <article class="review-card">
+        <h3 class="review-title"></h3>
+        <p class="review-meta"></p>
+        <div class="badge-row"></div>
+        <p class="review-comment"></p>
+      </article>
+    </template>
+
+    <template id="landlord-review-template">
+      <article class="review-card landlord-card">
+        <h3 class="review-title"></h3>
+        <p class="review-meta"></p>
+        <div class="badge-row"></div>
+        <p class="review-comment"></p>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
